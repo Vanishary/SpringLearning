@@ -5,7 +5,19 @@
         select * from t_user where id=#{id}
     </select>
 
-    <select id="findUserBuName" parameterType="String" resultType="com.ssm.po.User">
+    <select id="findUserByName" parameterType="String" resultType="com.ssm.po.User">
         select * from t_user where username like '%${value}%'
     </select>
+
+    <insert id="addUser" parameterType="com.ssm.po.User">
+        insert into t_user(username,jobs,phone) values(#{username},#{jobs},#{phone})
+    </insert>
+
+    <update id="updateUser" parameterType="com.ssm.po.User">
+        update t_user set username=#{username},jobs=#{jobs},phone=#{phone} where id=#{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="com.ssm.po.User">
+        delete from t_user where id=#{id}
+    </delete>
 </mapper>
