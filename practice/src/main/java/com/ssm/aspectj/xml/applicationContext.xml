@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+    <!-- 1 目标类 -->
+    <bean id="userDao" class="com.ssm.aspectj.UserDaopImpl" />
+    <!-- 2 切面 -->
+    <bean id="myAspect" class="com.ssm.aspectj.xml.MyAspect" />
+    <!-- 3 aop编程 -->
+    <aop:config>
+        <!-- 1.配置切面 -->
+        <aop:aspect id="aspect" ref="myAspect">
+            <!-- 2.配置切入点 -->
+            <aop:pointcut id="myPointCut" expression="execution(* com.ssm.aspectj.*.*(..))" />
+            <!-- 3.配置通知 -->
+                <!-- 前置通知 -->
+                <aop:before method="myBefore" pointcut-ref="myPointCut" />
+                <!-- 后置通知 -->
+                <aop:after-returning method="myAfterReturning" pointcut-ref="myPointCut" returning="returnVal" />
+                <!-- 环绕通知 -->
+                <aop:around method="myAround" pointcut-ref="myPointCut" />
+                <!-- 异常通知 -->
+                <aop:after-throwing method="myAfterThrowing" pointcut-ref="myPointCut" throwing="e" />
+                <!-- 最终通知 -->
+                <aop:after method="myAfter" pointcut-ref="myPointCut"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
