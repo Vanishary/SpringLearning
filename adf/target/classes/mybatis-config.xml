@@ -2,14 +2,6 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <properties resource="db.properties"/>
-    <!--使用扫描包形式定义别名-->
-    <!--如果不写typeAlias会报错找不到class
-    typeAliases是MyBatis中的别名处理器类，翻译过来就是别名的意思。别名处理器的作用就是把Java类型，给它起一个简单一点的别名，
-    这样我们在XML文件中引入全类名的地方就可以使用别名替代。这样可以减少很多的工作量，节约开发时间。别名，自动扫描ccom.ssm.po下的类型，
-    使得在后续配置文件中使用resultType的时候，可以直接使用Category,而不必写全com.ssm.po.Category-->
-    <typeAliases>
-        <package name="com.ssm.po"/>
-    </typeAliases>
     <environments default="mysql">
         <environment  id="mysql">
             <!-- 事务管理器 -->
@@ -25,7 +17,5 @@
     </environments>
     <mappers>
         <mapper resource="com/ssm/mapper/UserMapper.xml"/>
-        <mapper resource="com/ssm/mapper/StudentMapper.xml"/>
-        <mapper resource="com/ssm/mapper/StudentIdCardMapper.xml"/>
     </mappers>
 </configuration>

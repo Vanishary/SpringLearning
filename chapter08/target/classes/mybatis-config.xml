@@ -2,6 +2,10 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <properties resource="db.properties"/>
+    <!--使用扫描包形式定义别名-->
+    <typeAliases>
+        <package name="com.ssm.po"/>
+    </typeAliases>
     <environments default="mysql">
         <environment  id="mysql">
             <!-- 事务管理器 -->
@@ -17,5 +21,7 @@
     </environments>
     <mappers>
         <mapper resource="com/ssm/mapper/UserMapper.xml"/>
+        <mapper resource="com/ssm/mapper/StudentMapper.xml"/>
+        <mapper resource="com/ssm/mapper/StudentIdCardMapper.xml"/>
     </mappers>
 </configuration>
