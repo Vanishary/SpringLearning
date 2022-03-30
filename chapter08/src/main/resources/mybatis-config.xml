@@ -27,5 +27,7 @@
         <mapper resource="com/ssm/mapper/UserMapper.xml"/>
         <mapper resource="com/ssm/mapper/StudentMapper.xml"/>
         <mapper resource="com/ssm/mapper/StudentIdCardMapper.xml"/>
+        <mapper resource="com/ssm/mapper/BanjiMapper.xml"/>
+        <mapper resource="com/ssm/mapper/CourseMapper.xml"/>
     </mappers>
 </configuration>

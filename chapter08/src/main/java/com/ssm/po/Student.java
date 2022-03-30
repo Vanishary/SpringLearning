@@ -1,5 +1,7 @@
 package com.ssm.po;
 
+import java.util.List;
+
 /**
  * @author: GuoTao Li
  * @description: This is a description
@@ -10,6 +12,7 @@ public class Student {
     private String name;
     private String sex;
     private StudentIdCard studentIdCard;
+    private List<Course> courseList;
 
     public Integer getId() {
         return id;
@@ -43,6 +46,14 @@ public class Student {
         this.studentIdCard = studentIdCard;
     }
 
+    public List<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(List<Course> courseList) {
+        this.courseList = courseList;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -50,6 +61,7 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", sex='" + sex + '\'' +
                 ", studentIdCard=" + studentIdCard +
+                ", courseList=" + courseList +
                 '}';
     }
 }

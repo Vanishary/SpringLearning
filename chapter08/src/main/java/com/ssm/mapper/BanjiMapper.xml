@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.mapper.BanjiMap">
+    <!--一对多：查看某一班级及其关联学生的信息-->
+    <select id="findBanjiWithStudent" parameterType="Integer" resultMap="BanjiWithStudentResult">
+        select b.*,s.id as student_id,s.name as student_name from tb_banji b,tb_student_bj s where b.id=s.banji_id and b.id=#{id}
+    </select>
+    <resultMap id="BanjiWithStudentResult" type="Banji">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <collection property="studentList" ofType="Student">
+            <id property="id" column="student_id"/>
+            <result property="name" column="student_name"/>
+            <result property="sex" column="student_sex"/>
+        </collection>
+    </resultMap>
+</mapper>

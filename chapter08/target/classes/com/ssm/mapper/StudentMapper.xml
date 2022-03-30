@@ -11,4 +11,22 @@
         <association property="studentIdCard" column="card_id" javaType="StudentIdCard"
                      select="com.ssm.mapper.StudentIdCardMapper.findStudentIdCardById"/>
     </resultMap>
+
+    <select id="findStudentById2" parameterType="Integer" resultMap="StudentIdCardWithStudentResult2">
+        select s.*,sidcard.code from tb_student s,tb_studentidcard sidcard
+        where s.card_id=sidcard.id and s.id=#{id}
+    </select>
+    <resultMap id="StudentIdCardWithStudentResult2" type="Student">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="sex" column="sex"/>
+        <association property="studentIdCard" javaType="StudentIdCard">
+            <id property="id" column="card_id"/>
+            <result property="code" column="code"/>
+        </association>
+    </resultMap>
+
+    <select id="findStudentByIdWithCourse" parameterType="Integer" resultType="Student">
+        select * from tb_student where id in(select student_id from tb_electivecourse where course_id=#{id})
+    </select>
 </mapper>
