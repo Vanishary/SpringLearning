@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
-    <!-- 配置处理器Handle，映射controller请求 -->
-    <bean name="/controllerTest" class="com.ssm.controller.ControllerTest"/>
-    <!-- 处理器映射，将处理器Handle的name作为url进行查找 -->
-    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
-    <!-- 处理器适配器，配置对处理器中handleRequest()方法的调用 -->
-    <bean  class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 指定需要扫描的包 -->
+    <context:component-scan base-package="com.ssm.controller"/>
+<!--    &lt;!&ndash; 配置处理器Handle，映射controller请求 &ndash;&gt;-->
+<!--    <bean name="/controllerTest" class="com.ssm.controller.ControllerTest"/>-->
+<!--    &lt;!&ndash; 处理器映射，将处理器Handle的name作为url进行查找 &ndash;&gt;-->
+<!--    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>-->
+<!--    &lt;!&ndash; 处理器适配器，配置对处理器中handleRequest()方法的调用 &ndash;&gt;-->
+<!--    <bean  class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>-->
     <!-- 视图解析器 -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 </beans>
