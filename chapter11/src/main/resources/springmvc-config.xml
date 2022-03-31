@@ -8,7 +8,7 @@
     <context:component-scan base-package="com.ssm.controller"/>
 <!--    &lt;!&ndash; 配置处理器Handle，映射controller请求 &ndash;&gt;-->
 <!--    <bean name="/controllerTest" class="com.ssm.controller.ControllerTest"/>-->
-<!--    &lt;!&ndash; 处理器映射，将处理器Handle的name作为url进行查找 &ndash;&gt;-->
+<!--    &lt;!&ndash; 处理器映射器，将处理器Handle的name作为url进行查找 &ndash;&gt;-->
 <!--    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>-->
 <!--    &lt;!&ndash; 处理器适配器，配置对处理器中handleRequest()方法的调用 &ndash;&gt;-->
 <!--    <bean  class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>-->
