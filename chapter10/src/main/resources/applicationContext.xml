@@ -1,4 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans [
+        <!ELEMENT beans (context:property-placeholder|bean|tx:annotation-driven)*>
+        <!ATTLIST beans
+                xmlns CDATA #REQUIRED
+                xmlns:xsi CDATA #REQUIRED
+                xmlns:aop CDATA #REQUIRED
+                xmlns:tx CDATA #REQUIRED
+                xmlns:context CDATA #REQUIRED
+                xsi:schemaLocation CDATA #REQUIRED>
+        <!ELEMENT context:property-placeholder (#PCDATA)>
+        <!ATTLIST context:property-placeholder
+                location CDATA #REQUIRED>
+        <!ELEMENT bean (property)*>
+        <!ATTLIST bean
+                class CDATA #REQUIRED
+                id CDATA #REQUIRED>
+        <!ELEMENT property (#PCDATA)>
+        <!ATTLIST property
+                name CDATA #REQUIRED
+                ref CDATA #IMPLIED
+                value CDATA #IMPLIED>
+        <!ELEMENT tx:annotation-driven (#PCDATA)>
+        <!ATTLIST tx:annotation-driven
+                transaction-manager CDATA #REQUIRED>
+        ]>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
