@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.CategoryDao">
+    <!--查询新闻类别集合列表 -->
+    <select id="selectCategoryList" resultType="Category">
+		select * from t_category
+	</select>
+    <!--通过categoryId查询新闻类别 -->
+    <select id="getCategoryById" parameterType="Integer" resultType="Category">
+		select * from t_category where categoryId=#{categoryId}
+	</select>
+	<!--添加新闻类别-->
+	<insert id="addCategory" parameterType="Category">
+        insert into t_category(categoryId,
+                            categoryName)
+                    values(#{categoryId},
+                            #{categoryName})
+    </insert>
+	<!--更新用户-->
+	<update id="updateCategory" parameterType="Category">
+		update t_category
+		<set>
+			categoryName=#{categoryName}
+		</set>
+		where categoryId=#{categoryId}
+	</update>
+	<!--删除用户-->
+	<delete id="deleteCategory" parameterType="Integer">
+        delete from t_category where categoryId=#{categoryId}
+    </delete>
+</mapper>
