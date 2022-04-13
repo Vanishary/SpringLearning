@@ -17,6 +17,9 @@ public interface CategoryDao {
     //根据新闻类别ID查询新闻类别
     public Category getCategoryById(Integer categoryId);
 
+    //根据新闻类别名称查询新闻类别
+    public Category getCategoryByName(String categoryName);
+
     //添加新闻类别
     public int addCategory(Category category);
 

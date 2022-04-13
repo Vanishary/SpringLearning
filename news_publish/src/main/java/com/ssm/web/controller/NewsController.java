@@ -182,24 +182,73 @@ public class NewsController {
     public String findCategoryList(Model model) {
         List<Category> categoryList = categoryService.findCategoryList();
         model.addAttribute("categoryList", categoryList);
-        return "news/category_list";
+        return "category/category_list";
     }
 
-    //修改新闻类别
+    //转向修改新闻类别页面
     @RequestMapping(value = "/toEditCategory.action")
-    public String toEditCategory(Model model) {
-        List<Category> categoryList = categoryService.findCategoryList();
-        model.addAttribute("categoryList", categoryList);
-        return "news/category_list";
+    public String toEditCategory(Integer categoryId, Model model) {
+        Category category = categoryService.getCategoryByCategoryId(categoryId);
+        if (category != null) {
+            model.addAttribute("category", category);
+            List<Category> categoryList = categoryService.findCategoryList();
+            model.addAttribute("categoryList", categoryList);
+            return "category/edit_category";
+        } else {
+            return "redirect:findCategoryList.action";
+        }
     }
 
-    //增加新闻类别
+    //修改新闻类别名称
+    @RequestMapping(value = "/editCategory.action", method = RequestMethod.POST)
+    public String editUser(Category category, Model model) {
+        int rows = categoryService.editCategory(category);
+        if (rows > 0) {
+            // 添加成功，转向用户列表页面
+            return "redirect:findCategoryList.action";
+        } else {
+//            List<Role> roleList = roleService.findRoleList();
+//            model.addAttribute("roleList", roleList);
+            model.addAttribute("category", category);
+            // 修改失败，转回修改用户页面
+            return "category/edit_category";
+        }
+    }
+
+    //转向增加新闻类别
     @RequestMapping(value = "/toAddCategory.action")
     public String toAddCategory(Model model) {
         //获取角色列表，用于添加用户页面中的角色下拉列表
 //        List<Category> roleList = this.roleService.findRoleList();
 //        model.addAttribute("roleList", roleList);
-        return "user/add_user";
+        return "category/add_category";
+    }
+
+    //添加用户
+    @RequestMapping(value = "/addCategory.action", method = RequestMethod.POST)
+    public String addCategory(Category category, Model model) {
+        // 获取角色列表
+//        List<Role> roleList = roleService.findRoleList();
+//        model.addAttribute("roleList", roleList);
+        model.addAttribute("category", category);
+        //检查新闻类别名称是否已存在
+        Category checkCategory = categoryService.getCategoryByCategoryName(category.getCategoryName());
+        if (checkCategory != null) {
+            // 新闻类别名称已存在，重新转回添加新闻类别页面
+            model.addAttribute("checkCategoryNameMsg", "新闻类别已存在，请重新输入");
+            return "category/add_category";
+        } else {
+            // 新闻类别名称可用
+            //调用CategoryService实例中的添加用户方法
+            int rows = categoryService.addCategory(category);
+            if (rows > 0) {
+                // 添加成功，转向用户列表页面
+                return "redirect:findCategoryList.action";
+            } else {
+                // 添加失败，重新转回添加用户页面
+                return "category/add_category";
+            }
+        }
     }
 
     //删除新闻类别（前台页面中通过ajax方式调用此方法）

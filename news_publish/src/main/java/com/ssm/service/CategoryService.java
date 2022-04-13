@@ -1,8 +1,6 @@
 package com.ssm.service;
 
 import com.ssm.po.Category;
-import com.ssm.po.User;
-
 import java.util.List;
 
 /**
@@ -13,6 +11,8 @@ import java.util.List;
 public interface CategoryService {
     public List<Category> findCategoryList();
     public Category findCategoryById(Integer categoryId);
+    public Category getCategoryByCategoryId(Integer categoryId);
+    public Category getCategoryByCategoryName(String categoryName);
     public int editCategory(Category category);
     public int addCategory(Category category);
     public int deleteCategory(Integer categoryId);

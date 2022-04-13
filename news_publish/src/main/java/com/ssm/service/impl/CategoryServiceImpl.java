@@ -1,6 +1,7 @@
 package com.ssm.service.impl;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ssm.dao.CategoryDao;
@@ -24,6 +25,18 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category findCategoryById(Integer categoryId) {
         return this.categoryDao.getCategoryById(categoryId);
+    }
+
+    @Override
+    public Category getCategoryByCategoryId(Integer categoryId) {
+        Category category=this.categoryDao.getCategoryById(categoryId);
+        return category;
+    }
+
+    @Override
+    public Category getCategoryByCategoryName(String categoryName) {
+        Category category=this.categoryDao.getCategoryByName(categoryName);
+        return category;
     }
 
     @Override
