@@ -20,7 +20,8 @@
     <span>位置：</span>
     <ul class="placeul">
         <li><a href="#">首页</a></li>
-        <li><a href="${pageContext.request.contextPath}/findNewsByPage.action">新闻列表</a></li>
+        <li>></li>
+        <li>发布新闻</li>
     </ul>
 </div>
 <div class="formbody">

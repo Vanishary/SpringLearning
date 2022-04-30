@@ -40,7 +40,7 @@
     <select id="getNewsByNewsId" parameterType="Integer" resultType="News">
 		select *,categoryName from t_news as n,t_category as c where newsId=#{newsId} and n.categoryId=c.categoryId
 	</select>
-    <!--添加用户 -->
+    <!--添加新闻 -->
     <insert id="addNews" parameterType="News">
 		insert into t_news(
 			title,
@@ -65,7 +65,7 @@
 			#{categoryId}
 		)
 	</insert>
-    <!-- 更新用户 -->
+    <!-- 更新新闻 -->
     <update id="editNews" parameterType="News">
         update t_news
         <set>

@@ -17,7 +17,7 @@ public interface NewsDao {
     List<News> findNewsList(@Param("keywords") String keywords, @Param("newsListCategoryId") Integer newsListCategoryId, @Param("startRows") Integer startRows, @Param("pageSize") Integer pageSize);
     News getNewsByNewsId(Integer newsId);
     int addNews(News news);
-    int updateNews(News news);
+    int editNews(News news);
     int setNewsPublishStatus(News news);
     int delNews(Integer newsId);
 }

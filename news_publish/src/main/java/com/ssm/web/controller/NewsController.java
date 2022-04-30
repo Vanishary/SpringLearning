@@ -40,7 +40,7 @@ public class NewsController {
     //查询新闻分页
     @RequestMapping(value = "/findNewsByPage.action")
     public String findNewsByPage(String keywords, Integer newsListCategoryId, @RequestParam(defaultValue = "1") Integer currentPage, @RequestParam(defaultValue = "10") Integer pageSize, Model model) {
-        // 获取角色列表
+        // 获取类别列表
         List<Category> categoryList = categoryService.findCategoryList();
         model.addAttribute("categoryList", categoryList);
         // 获取用户PageBean实例
@@ -224,12 +224,9 @@ public class NewsController {
         return "category/add_category";
     }
 
-    //添加用户
+    //添加类别
     @RequestMapping(value = "/addCategory.action", method = RequestMethod.POST)
     public String addCategory(Category category, Model model) {
-        // 获取角色列表
-//        List<Role> roleList = roleService.findRoleList();
-//        model.addAttribute("roleList", roleList);
         model.addAttribute("category", category);
         //检查新闻类别名称是否已存在
         Category checkCategory = categoryService.getCategoryByCategoryName(category.getCategoryName());

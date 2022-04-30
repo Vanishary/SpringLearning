@@ -50,7 +50,7 @@ public class NewsServiceImpl implements NewsService {
     }
     @Override
     public int editNews(News news) {
-        return newsDao.updateNews(news);
+        return newsDao.editNews(news);
     }
     @Override
     public int delNews(Integer newsId) {

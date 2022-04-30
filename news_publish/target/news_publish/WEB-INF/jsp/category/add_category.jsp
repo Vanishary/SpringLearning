@@ -20,7 +20,8 @@
     <span>位置：</span>
     <ul class="placeul">
         <li><a href="#">首页</a></li>
-        <li><a href="${pageContext.request.contextPath}/findCategoryList.action">新闻类别列表</a></li>
+        <li>></li>
+        <li>添加新闻类别</li>
     </ul>
 </div>
 <div class="formbody">

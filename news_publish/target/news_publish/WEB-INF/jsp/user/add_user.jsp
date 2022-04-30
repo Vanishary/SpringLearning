@@ -20,7 +20,9 @@
         <span>位置：</span>
         <ul class="placeul">
             <li><a href="#">首页</a></li>
-            <li><a href="${pageContext.request.contextPath}/findUserList.action">用户列表</a></li>
+            <li>></li>
+            <li>添加用户</li>
+<%--            <li><a href="${pageContext.request.contextPath}/findUserList.action">用户列表</a></li>--%>
         </ul>
     </div>
     <div class="formbody">

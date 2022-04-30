@@ -4,7 +4,6 @@
   Date: 2022/4/11 5:02 下午 
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     request.setCharacterEncoding("UTF-8");
@@ -21,12 +20,13 @@
     <span>位置：</span>
     <ul class="placeul">
         <li><a href="#">首页</a></li>
-        <li><a href="${pageContext.request.contextPath}/findNewsByPage.action">新闻列表</a></li>
+        <li>></li>
+        <li>修改新闻</li>
     </ul>
 </div>
 <div class="formbody">
     <div class="formtitle"><span>修改新闻</span></div>
-    <form action="${pageContext.request.contextPath}/addNews.action" name="ff" method="post" onsubmit="return checkValue()">
+    <form action="${pageContext.request.contextPath}/editNews.action" name="ff" method="post" onsubmit="return checkValue()">
         <input id="newsId" name="newsId" value="${news.newsId}" type="hidden" />
         <ul class="forminfo">
             <li><label style="width:150px;">新闻标题（<font style="color:Red;font-weight:bolder;">*</font>）：</label><input id="title" name="title" value="${news.title}" type="text" class="dfinput" /><i></i></li>

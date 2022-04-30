@@ -32,17 +32,17 @@
     </bean>
 
     <!-- 配置拦截器(拦截器使用会影响登录页面图片展示，使用时先处理这个问题) -->
-<!--    <mvc:interceptors>-->
-<!--        &lt;!&ndash; 使用bean直接定义在<mvc:interceptors>下面的Interceptor将拦截所有请求 &ndash;&gt;-->
-<!--        &lt;!&ndash; <bean class="com.ssm.interceptor.LoginInterceptor" /> &ndash;&gt;-->
-<!--        <mvc:interceptor>-->
-<!--            &lt;!&ndash; 配置拦截器作用的路径 &ndash;&gt;-->
-<!--            <mvc:mapping path="/**" />-->
-<!--            &lt;!&ndash; 配置不需要拦截器作用的路径 &ndash;&gt;-->
-<!--            <mvc:exclude-mapping path="/index.action"/>-->
-<!--            <mvc:exclude-mapping path="/findNewsByCategoryIdPage.action"/>-->
-<!--            <mvc:exclude-mapping path="/findFrontNewsByNewsId.action"/>-->
-<!--            <bean class="com.ssm.interceptor.LoginInterceptor" />-->
-<!--        </mvc:interceptor>-->
-<!--    </mvc:interceptors>-->
+    <mvc:interceptors>
+        <!-- 使用bean直接定义在<mvc:interceptors>下面的Interceptor将拦截所有请求 -->
+        <!-- <bean class="com.ssm.interceptor.LoginInterceptor" /> -->
+        <mvc:interceptor>
+            <!-- 配置拦截器作用的路径 -->
+            <mvc:mapping path="/**" />
+            <!-- 配置不需要拦截器作用的路径 -->
+            <mvc:exclude-mapping path="/index.action"/>
+            <mvc:exclude-mapping path="/findNewsByCategoryIdPage.action"/>
+            <mvc:exclude-mapping path="/findFrontNewsByNewsId.action"/>
+            <bean class="com.ssm.interceptor.LoginInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
